@@ -53,8 +53,13 @@ const reservationSlice = createSlice({
   name: "reservation",
   initialState: {
     reservations: [],
+    search: "",
   },
-  reducers: {},
+  reducers: {
+    setReservationSearch: (state, action) => {
+      state.search = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(makeReservation.fulfilled, (state, action) => {
       state.reservations.push(action.payload);
@@ -76,3 +81,4 @@ const reservationSlice = createSlice({
 });
 
 export default reservationSlice.reducer;
+export const { setReservationSearch } = reservationSlice.actions;

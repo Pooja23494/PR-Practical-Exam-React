@@ -29,8 +29,13 @@ const roomSlice = createSlice({
   name: "room",
   initialState: {
     rooms: [],
+    search:'',
   },
-  reducers: {},
+  reducers: {
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(addRoom.fulfilled, (state, action) => {
       state.rooms.push(action.payload);
@@ -42,3 +47,4 @@ const roomSlice = createSlice({
 });
 
 export default roomSlice.reducer;
+export const { setSearch } = roomSlice.actions;

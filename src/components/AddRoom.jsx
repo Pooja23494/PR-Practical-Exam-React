@@ -22,7 +22,7 @@ const AddRoom = () => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <form onSubmit={handleSubmit} className="card p-4 mt-5">
+          <form onSubmit={handleSubmit} className="card p-4 mt-5 shadow">
             <h2 className="text-center">Add Room</h2>
             <div className="mb-3">
               <label htmlFor="image" className="form-label">
@@ -34,7 +34,7 @@ const AddRoom = () => {
                 id="image"
                 value={room.image||''}
                 onChange={handleChange}
-                className="form-control rounded-pill"
+                className="form-control"
                 placeholder="Enter Room Image URL"
               />
             </div>
@@ -66,7 +66,7 @@ const AddRoom = () => {
                 id="price"
                 value={room.price||''}
                 onChange={handleChange}
-                className="form-control rounded-pill"
+                className="form-control"
                 placeholder="Enter Room Price"
               />
             </div>

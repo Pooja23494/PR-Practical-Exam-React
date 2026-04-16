@@ -6,54 +6,50 @@ import {
   viewReservation,
 } from "../features/reservation/reservationSlice";
 import { useParams, useNavigate } from "react-router-dom";
+import { viewRooms } from "../features/room/roomSlice";
 
 const ReservationForm = () => {
   const { reservations } = useSelector((state) => state.reservation);
   const { rooms } = useSelector((state) => state.room);
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
-  const param = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(viewReservation());
+    dispatch(viewRooms());
   }, []);
 
   useEffect(() => {
-    if (param.id && reservations?.length > 0) {
-      const existingData = reservations.find(
-        (res) => res.id === parseInt(param.id),
-      );
-
-      if (existingData) {
-        setFormData(existingData);
+    if (id) {
+      const existingBooking = reservations.find((r) => r.id == id);
+      if (existingBooking) {
+        setFormData(existingBooking);
+      }
+      else{
+        setFormData({});
       }
     }
-  }, [param.id, reservations]);
+  }, [id, reservations]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: name === "roomId" ? Number(value) : value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (param.id) {
+    if (id) {
       dispatch(
         updateReservation({
-          id: parseInt(param.id),
+          id,
           data: formData,
         }),
       );
     } else {
       dispatch(makeReservation(formData));
     }
-
     navigate("/reservationlist");
     setFormData({});
   };
@@ -64,7 +60,7 @@ const ReservationForm = () => {
         <div className="col-md-6">
           <form onSubmit={handleSubmit} className="card p-4 mt-5 shadow">
             <h2 className="text-center mb-4">
-              {param.id ? "Edit Reservation" : "Book Room"}
+              {id ? "Edit Reservation" : "Book Room"}
             </h2>
             <div className="mb-3">
               <label className="form-label">Guest Name</label>
@@ -72,8 +68,9 @@ const ReservationForm = () => {
                 type="text"
                 name="name"
                 className="form-control"
-                value={formData.name||''}
+                value={formData.name || ""}
                 onChange={handleChange}
+                placeholder="Enter Guest Name"
                 required
               />
             </div>
@@ -82,14 +79,14 @@ const ReservationForm = () => {
               <select
                 name="roomId"
                 className="form-select"
-                value={formData.roomId}
+                value={formData.roomId||''}
                 onChange={handleChange}
                 required
               >
                 <option value="">-- Select Room --</option>
                 {rooms.map((room) => (
-                  <option key={room.id} value={room.id}>
-                    {room.name} ({room.type})
+                  <option key={room.id} value={room.id} className=" text-capitalize">
+                    {room.type}
                   </option>
                 ))}
               </select>
@@ -100,7 +97,7 @@ const ReservationForm = () => {
                 type="date"
                 name="checkIn"
                 className="form-control"
-                value={formData.checkIn||''}
+                value={formData.checkIn || ""}
                 onChange={handleChange}
                 required
               />
@@ -111,13 +108,13 @@ const ReservationForm = () => {
                 type="date"
                 name="checkOut"
                 className="form-control"
-                value={formData.checkOut||''}
+                value={formData.checkOut || ""}
                 onChange={handleChange}
                 required
               />
             </div>
-            <button className="btn btn-primary w-100">
-              {param.id ? "Update Reservation" : "Book Now"}
+            <button className="btn btn-dark w-100">
+              {id ? "Update Reservation" : "Book Now"}
             </button>
           </form>
         </div>

@@ -2,14 +2,14 @@
   "rooms": [
     {
       "image": "https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?semt=ais_hybrid&w=740&q=80",
-      "price": "466",
+      "price": "799",
       "type": "single-room",
       "status": "booked",
       "id": "9ZWmHjm40_c"
     },
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIAuKQ_vbe7ISB8FBwK6gxf7UgbIZymbr7fA&s",
-      "price": "260",
+      "price": "2999",
       "type": "delux",
       "status": "booked",
       "id": "9pLlpxJjGHs"
@@ -20,15 +20,36 @@
       "type": "single-room",
       "status": "available",
       "id": "6CM_rmVvswg"
+    },
+    {
+      "image": "https://media.istockphoto.com/id/1464462569/photo/happy-family-resting-under-air-conditioner-on-beige-wall-at-home.jpg?s=612x612&w=0&k=20&c=DDjRPWVmxJrJpahEbROcSAd08-hYBQ29ppl01vTKM5g=",
+      "price": "999",
+      "type": "ac",
+      "status": "booked",
+      "id": "qmELzDXPERk"
     }
   ],
   "reservation": [
     {
-      "name": "Samson Barnes",
-      "checkIn": "1986-09-24",
-      "checkOut": "1978-11-15",
+      "name": "Joshua Li",
+      "checkIn": "2026-04-16",
+      "checkOut": "2026-04-17",
+      "roomId": "9pLlpxJjGHs",
+      "id": "rmuIkAPBvjk"
+    },
+    {
+      "name": "Pooja Patel",
       "roomId": "9ZWmHjm40_c",
-      "id": "h9F-EyrQaWg"
+      "checkIn": "2026-04-17",
+      "checkOut": "2026-04-18",
+      "id": "6mIipSCj0UI"
+    },
+    {
+      "name": "Thor Wyatt",
+      "roomId": "qmELzDXPERk",
+      "checkIn": "2026-04-18",
+      "checkOut": "2026-04-19",
+      "id": "NXEwNaE14Jk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

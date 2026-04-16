@@ -12,74 +12,66 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {uname,password}=user;
+    const { uname, password } = user;
+
     if (!uname || !password) {
       alert("Please enter user details");
+      return;
     }
-    if (uname == "admin") {
-      if (password == "admin123") {
-        alert("Login Successfully");
-        navigate("/roomlist");
-      } else {
-        alert("Password wrong");
-      }
+
+    if (uname === "admin" && password === "admin123") {
+      alert("Login Successfully");
+      navigate("/roomlist");
     } else {
-      alert("Invalid User name and password");
+      alert("Invalid username or password");
     }
   };
+
   return (
-    <>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-4">
-            <form
-              action=""
-              method="post"
-              className="card p-4 mt-5"
-              onSubmit={handleSubmit}
-            >
-              <h2 className="text-center">Login</h2>
-              <div className="mb-3">
-                <label htmlFor="uname" className="form-lable mb-1">
-                  User Name
-                </label>
-                <input
-                  type="text"
-                  name="uname"
-                  value={user.uname || ""}
-                  onChange={handleChange}
-                  id="uname"
-                  className="form-control rounded-pill"
-                  placeholder="Enter User Name"
-                />
-              </div>
-              <div className="mb-5">
-                <label htmlFor="password" className="form-label mb-1">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  value={user.password || ""}
-                  onChange={handleChange}
-                  id="password"
-                  className="form-control rounded-pill"
-                  placeholder="Enter Password"
-                />
-              </div>
-              <div className="mb-3 text-center">
-                <button
-                  type="submit"
-                  className="btn btn-dark w-50 rounded-pill"
-                >
-                  Login
-                </button>
-              </div>
-            </form>
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{
+        height: "100vh",
+        background: "linear-gradient(to right, #141e30, #243b55)",
+      }}
+    >
+      <div
+        className="card p-4 shadow-lg"
+        style={{ width: "350px", borderRadius: "15px" }}
+      >
+        <h3 className="text-center mb-4 text-dark fw-bold">🏨 Login</h3>
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label fw-semibold">Username</label>
+            <input
+              type="text"
+              name="uname"
+              value={user.uname||''}
+              onChange={handleChange}
+              className="form-control rounded-pill"
+              placeholder="Enter username"
+            />
           </div>
-        </div>
+
+          {/* Password */}
+          <div className="mb-3 position-relative">
+            <label className="form-label fw-semibold">Password</label>
+            <input
+              type='password'
+              name="password"
+              value={user.password||''}
+              onChange={handleChange}
+              className="form-control rounded-pill pe-5"
+              placeholder="Enter password"
+            />
+          </div>
+          <div className="text-center mt-4">
+            <button className="btn btn-dark rounded-pill w-100">Login</button>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
