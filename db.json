@@ -1,0 +1,35 @@
+{
+  "rooms": [
+    {
+      "image": "https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?semt=ais_hybrid&w=740&q=80",
+      "price": "466",
+      "type": "single-room",
+      "status": "booked",
+      "id": "9ZWmHjm40_c"
+    },
+    {
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIAuKQ_vbe7ISB8FBwK6gxf7UgbIZymbr7fA&s",
+      "price": "260",
+      "type": "delux",
+      "status": "booked",
+      "id": "9pLlpxJjGHs"
+    },
+    {
+      "image": "https://lh5.googleusercontent.com/proxy/79dFS7_kef_xyyP2-1d9fVDlBN_13ilA_Dn8sg4RH0TkFDI_xnjRxRrQr-r9ZMvZxIRJhkUZa42WUo4rFSv4_FkHNzY4Tuvf8T8yBfC9MeN5IDWaVRZk-8594W7WncvpzOks4_fv3BH1WS4OGM1D58HFH61UoRd4whY",
+      "price": "939",
+      "type": "single-room",
+      "status": "available",
+      "id": "6CM_rmVvswg"
+    }
+  ],
+  "reservation": [
+    {
+      "name": "Samson Barnes",
+      "checkIn": "1986-09-24",
+      "checkOut": "1978-11-15",
+      "roomId": "9ZWmHjm40_c",
+      "id": "h9F-EyrQaWg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
